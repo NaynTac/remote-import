@@ -1,7 +1,12 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Sep 25 03:37:55 2026
+import requests
 
-@author: pimen
-"""
 
+# class URLLoader:
+    
+#     def create_module(self, target):
+#         return None
+    
+#     def exec_module(self, module):
+#         response.
+
+response = requests.get("")

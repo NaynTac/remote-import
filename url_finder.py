@@ -1,7 +1,20 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Sep 25 03:37:33 2026
+from url_loader import URLLoader
 
-@author: pimen
-"""
+from importlib.abc import PathEntryFinder
+from importlib.util import spec_from_loader
 
+
+class URLFinder(PathEntryFinder):
+    
+    def __init__(self, url, available):
+        self.url = url
+        self.available = available
+        
+    def find_spec(self, name, target=None):
+        if name in self.available:
+            origin = f"{self.url}/{name}.py"
+            loader = URLLoader()
+            return spec_from_loader(name, loader, origin=origin)
+        else:
+            return None
+        
